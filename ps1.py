@@ -27,12 +27,31 @@ print msg_parity
 
 #checking message for 010 sequence
 l1=len(msg_parity)
-for i in range(0,l1):
-	if msg_parity[i:i+2]=='010':
-		count1=count1+1
-print count1
+#print l1
+#for i in range(0,l1):
+#	if msg_parity[i:i+2]=='010':
+#		count1=count1+1
+#print count1
 
 
+string='010'
+for i in range(0,l):
+	if msg_parity[i:i+3]==string:
+		index=i+3
+#adding 0 after 010
+	msg1_parity=msg_parity[:index]+'0'+msg_parity[index+2:]
+
+#to add 0 if the frame ends with 01
+string1="01"
+if msg_parity[l1-2:]==string1:
+	msg1_parity=msg1_parity[:len(msg1_parity)]+'0'
+#print msg1_parity
+
+#Adding flag 0101 at the end of frame
+
+final_string=msg1_parity[:len(msg1_parity)]+'0101'
+
+print final_string
 
 
 
