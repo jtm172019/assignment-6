@@ -8,7 +8,7 @@ print("Enter binary data to be transmitted")
 n=raw_input("Enter data:")
 count=0
 count1=0
-
+index=0
 
 #getting number of bits in data
 
@@ -35,21 +35,22 @@ l1=len(msg_parity)
 
 
 string='010'
-for i in range(0,l):
+for i in range(0,l1):
 	if msg_parity[i:i+3]==string:
 		index=i+3
 #adding 0 after 010
-	msg1_parity=msg_parity[:index]+'0'+msg_parity[index+2:]
+	msg1_parity=msg_parity[:index]+'0'+msg_parity[index+1:]
+#print msg1_parity
 
 #to add 0 if the frame ends with 01
-string1="01"
+string1='01'
 if msg_parity[l1-2:]==string1:
-	msg1_parity=msg1_parity[:len(msg1_parity)]+'0'
-#print msg1_parity
+	msg2_parity=msg1_parity[:len(msg1_parity)]+'0'
+print msg2_parity
 
 #Adding flag 0101 at the end of frame
 
-final_string=msg1_parity[:len(msg1_parity)]+'0101'
+final_string=msg2_parity[:len(msg2_parity)]+'0101'
 
 print final_string
 
